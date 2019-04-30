@@ -1,7 +1,64 @@
-#include "tsp.h"
+if (arq.is_open() && arq.good()){
+		//while(arq){
+			arq >> text;
+			
+			for (i = 0, k=0; i < text.length(); i++){
+			
+    			cout << text[i] << " - " << (int)text[i] << endl;
+    			if((int)text[i]>=48  && (int)text[i]<=57){
+    				j[k]=(int)text[i]-48;
+    				cout<<"      "<<k<<" - "<<j[k]<<endl;
+    				k++;
+				}
+    			
+    	}
+		
+	}cout<<endl<<k<<endl;
+	for(i=0, Total=0, mult=0; k>0; k--, i++){
+				cout<<(j[i])<< " ";
+	    		for(l=0, mult=1; l<k-1; l++){
+	    			mult*=10;
+				}
+				//if(mult!=0)
+					Total+=(j[i])*(mult);
+				//else
+				//	Total+=j[i];
+			
+	    		cout<<" -> "<<mult<<" = "<< Total<<endl;
+		}
+  				cout<<endl<<endl <<Total<< endl;
+
+
+ #include "tsp.h"
 
 void iniciaGrafo(grafo *g, ifstream &instancia){
-    instancia >> g->n_elementos;
+    int i , j[100], Total, k, l, mult;
+    //instancia >> g->n_elementos;
+    instancia >> text;
+			
+			for (i = 0, k=0; i < text.length(); i++){
+			
+    			cout << text[i] << " - " << (int)text[i] << endl;
+    			if((int)text[i]>=48  && (int)text[i]<=57){
+    				j[k]=(int)text[i]-48;
+    				cout<<"      "<<k<<" - "<<j[k]<<endl;
+    				k++;
+				}cout<<endl<<k<<endl;
+	                for(i=0, Total=0, mult=0; k>0; k--, i++){
+                        cout<<(j[i])<< " ";
+                        for(l=0, mult=1; l<k-1; l++){
+                            mult*=10;
+                        }
+                        //if(mult!=0)
+                            Total+=(j[i])*(mult);
+                        //else
+                        //	Total+=j[i];
+                    
+                        cout<<" -> "<<mult<<" = "<< Total<<endl;
+                    }
+                        cout<<endl<<endl <<Total<< endl;
+                    
+    g->n_elementos = Total;
 
     g->elementos = new int*[g->n_elementos];
     for (int u = 0; u < g->n_elementos; u++) g->elementos[u] = new int[g->n_elementos];
@@ -83,6 +140,6 @@ void printRota(grafo g, int *rota){
     cout << "Rota: " << endl;
     for(int u = 0; u <= g.n_elementos; u++) cout << rota[u] << " ";
     cout << endl;
-}
+}                 
 
 
